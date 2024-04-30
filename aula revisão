@@ -1,0 +1,65 @@
+package dados;
+
+import java.util.Scanner;
+
+public class main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        //instanciando o objeto
+        Funcionario f1 = new Funcionario();
+        f1.salarioBase = 800;
+
+        //invocando seus métodos sem retorno e sem argumento
+        f1.dobrarSalario();
+
+        //invocando seus métodos sem retorno e com argumento
+        f1.descontarAdiantamento(300);
+
+        //invocando seus métodos sem argumento e com retorno
+        double ferias = f1.calcularFerias();
+
+        //invocando seus métodos com argumentos e com retorno
+        double horasExtras = f1.calcularHorasExtras(10);
+
+
+        //definindo seus atributos
+        System.out.println("Escreva seu nome: ");
+        f1.nome = sc.nextLine();
+
+        System.out.println("Olá " + f1.nome + ", seu salário é: " + f1.salarioBase);
+        System.out.println("O valor de suas férias é: " + ferias);
+        System.out.println("O valor de suas horas extras é: " + horasExtras);
+    }
+}
+
+
+/////////////////
+
+
+package dados;
+
+public class Funcionario {
+
+    //atributos
+    public String nome;
+    public double salarioBase;
+
+    public void dobrarSalario(){
+        this.salarioBase = this.salarioBase * 2;
+    }
+    public double calcularFerias(){
+        return this.salarioBase * 1.33;
+    }
+    public void descontarAdiantamento(double valor){
+        //salario acrescido de um terço do salário
+        this.salarioBase = this.salarioBase - valor;
+
+    }
+    public double calcularHorasExtras(double totalDeHoras){
+        //horas extras valem o dobro do valor hora normal
+        return this.salarioBase/220 * 2 * totalDeHoras;
+    }
+}
